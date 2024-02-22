@@ -10,23 +10,6 @@ public class Person {
         return name;
     }
 
-    public void startTask(Task task){
-        if(task.getState() instanceof NotStarted){
-            task.startTask();
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
-    }
-    public void finishTask(Task task){
-        if(task.getState() instanceof InProgress){
-            task.finishTask();
-        }
-        else{
-            throw  new IllegalArgumentException();
-        }
-    }
-
     public boolean equals(Object obj){
         if(obj == null || obj.getClass()!= getClass()) return false;
         Person p = (Person) obj;

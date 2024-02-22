@@ -14,7 +14,7 @@ public class ModelManager implements Model{
     @Override
     public synchronized void startTask(Task task) {
         try{
-            task.getCreator().startTask(task);
+            task.startTask();
             support.firePropertyChange("List", null, tasks);
 
         }catch (Exception e){
@@ -26,7 +26,7 @@ public class ModelManager implements Model{
     @Override
     public synchronized void finishTask(Task task) {
         try{
-            task.getCreator().finishTask(task);
+            task.finishTask();
             support.firePropertyChange("List", null, tasks);
 
         }catch (Exception e){
