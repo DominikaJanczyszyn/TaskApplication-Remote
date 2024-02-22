@@ -1,17 +1,24 @@
-package handin1.viewmodel;
+package com.example.workshops2session2.ViewModel;
 
-import handin1.model.Model;
+
+import com.example.workshops2session2.Model.Model;
 
 public class ViewModelFactory {
-    private AddVinylViewModel addVinylViewModel;
-    private ManageVinylViewModel manageVinylsViewController;
+    private StartViewModel startViewModel;
+    private AddTaskViewModel addTaskViewModel;
+    private ManageTasksViewModel manageTasksViewController;
+
 
     public ViewModelFactory(Model model){
-        this.addVinylViewModel = new AddVinylViewModel(model);
-        this.manageVinylsViewController = new ManageVinylViewModel(model);
+        this.startViewModel = new StartViewModel(model);
+        this.addTaskViewModel = new AddTaskViewModel(model);
+        this.manageTasksViewController = new ManageTasksViewModel(model);
     }
-    public AddVinylViewModel getAddVinylViewModel(){
-        return addVinylViewModel;
+    public StartViewModel getStartViewModel(){
+        return startViewModel;
     }
-    public ManageVinylViewModel getManageVinylsViewModel(){return  manageVinylsViewController;}
+    public AddTaskViewModel getAddTaskViewModel(){
+        return addTaskViewModel;
+    }
+    public ManageTasksViewModel getManageTasksViewModel(){return  manageTasksViewController;}
 }

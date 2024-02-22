@@ -1,47 +1,38 @@
-package handin1.viewmodel;
+package com.example.workshops2session2.ViewModel;
 
-import handin1.model.Model;
-import handin1.model.Person;
-import handin1.model.Vinyl;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import com.example.workshops2session2.Model.Model;
+import com.example.workshops2session2.Model.Person;
+import com.example.workshops2session2.Model.Task;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.layout.Region;
 
-public class AddVinylViewModel {
+public class AddTaskViewModel {
 
     private StringProperty title;
-    private StringProperty name;
-    private StringProperty lastname;
-    private StringProperty year;
+    private StringProperty description;
     private StringProperty message;
 
     private Model model;
 
-    public AddVinylViewModel(Model model){
+    public AddTaskViewModel(Model model){
         this.model = model;
         this.title = new SimpleStringProperty("");
-        this.name = new SimpleStringProperty("");
-        this.lastname = new SimpleStringProperty("");
-        this.year = new SimpleStringProperty("");
+        this.description = new SimpleStringProperty("");
         this.message = new SimpleStringProperty("");
     }
     public void add(){
         try{
-            try{
-                if (!title.get().isEmpty() && !title.get().equals("") && !name.get().isEmpty() && !name.get().equals("") && !lastname.get().isEmpty() && !lastname.get().equals("")){
-                    Vinyl vinyl = new Vinyl(title.get(), new Person(name.get(), lastname.get()), Integer.parseInt(year.get()));
-                    model.addVinyl(vinyl);
-                    message.set("You added new Vinyl: \n" + vinyl);
-                }
-                else{
-                    message.set("Fill all of the fields!");
-                }
 
-            }catch (NumberFormatException e){
-                message.set("Wrong input in field year!");
+            if (!title.get().isEmpty() && !title.get().equals("") && !description.get().isEmpty() && !description.get().equals("")){
+                Person person = new Person(User.name);
+                Task task = new Task(title.get(), description.get(), person);
+                model.addTask(task);
+                message.set("You added new Task: \n" + task);
             }
+            else{
+                message.set("Fill all of the fields!");
+            }
+
         }catch (IllegalArgumentException e){
             message.set("Wrong input!");
         }
@@ -49,13 +40,9 @@ public class AddVinylViewModel {
     public void bindTitle(StringProperty property){
         property.bindBidirectional(title);
     }
-    public void bindName(StringProperty property){
-        property.bindBidirectional(name);
+    public void bindDescription(StringProperty property){
+        property.bindBidirectional(description);
     }
-    public void bindLastName(StringProperty property){
-        property.bindBidirectional(lastname);
-    }
-    public void bindYear(StringProperty property){property.bindBidirectional(year);}
     public void bindMessage(StringProperty property){
         property.bindBidirectional(message);
     }

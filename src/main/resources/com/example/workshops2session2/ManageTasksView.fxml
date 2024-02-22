@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="538.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.workshops2session2.View.ManageTasksViewController">
+   <children>
+      <TableView fx:id="ownTaskTableView" layoutX="54.0" layoutY="62.0" onMouseClicked="#onSelect" prefHeight="102.0" prefWidth="595.0">
+        <columns>
+          <TableColumn fx:id="ownTaskTitle" prefWidth="186.3999900817871" text="Title" />
+          <TableColumn fx:id="ownTaskDescription" prefWidth="288.00001525878906" text="Description" />
+            <TableColumn fx:id="ownTaskStatus" prefWidth="121.5999755859375" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="54.0" layoutY="32.0" text="Your Tasks:" />
+      <Label layoutX="54.0" layoutY="176.0" text="Others Tasks:" />
+      <TableView fx:id="taskTableView" layoutX="54.0" layoutY="194.0" prefHeight="200.0" prefWidth="714.0">
+        <columns>
+          <TableColumn fx:id="taskTitle" prefWidth="191.2000389099121" text="Title" />
+          <TableColumn fx:id="taskDescription" minWidth="0.0" prefWidth="289.59999084472656" text="Description" />
+            <TableColumn fx:id="taskCreatedBy" prefWidth="117.5999755859375" text="Created By" />
+            <TableColumn fx:id="taskStatus" prefWidth="116.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="58.0" layoutY="456.0" mnemonicParsing="false" onAction="#goToAdd" text="Add New Task" />
+      <Button fx:id="startButton" disable="true" layoutX="675.0" layoutY="62.0" mnemonicParsing="false" onAction="#onStart" text="Start the Task" />
+      <Button fx:id="finishButton" disable="true" layoutX="675.0" layoutY="101.0" mnemonicParsing="false" onAction="#onFinish" text="Finish the Task" />
+   </children>
 </AnchorPane>

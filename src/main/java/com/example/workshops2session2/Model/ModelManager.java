@@ -1,4 +1,4 @@
-package com.example.workshops2state_observer_threads_mvvm.Model;
+package com.example.workshops2session2.Model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -12,32 +12,35 @@ public class ModelManager implements Model{
         this.support = new PropertyChangeSupport(tasks);
     }
     @Override
-    public void acceptTask(Person person, Task task) {
-        person.acceptTask(task);
-        ArrayList<Task> newValue = tasks;
-        support.firePropertyChange("List", null, newValue);
+    public synchronized void startTask(Task task) {
+        try{
+            task.getCreator().startTask(task);
+            support.firePropertyChange("List", null, tasks);
+
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     @Override
-    public void startTask(Person person, Task task) {
-        person.startTask(task);
-        ArrayList<Task> newValue = tasks;
-        support.firePropertyChange("List", null, newValue);
+    public synchronized void finishTask(Task task) {
+        try{
+            task.getCreator().finishTask(task);
+            support.firePropertyChange("List", null, tasks);
+
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     @Override
-    public void finishTask(Person person,Task task) {
-        person.finishTask(task);
-        ArrayList<Task> newValue = tasks;
-        support.firePropertyChange("List", null, newValue);
-    }
-
-    @Override
-    public void addTask(Task task) {
+    public synchronized void addTask(Task task) {
         tasks.add(task);
-        support.firePropertyChange("List", null, task);
-    }
+        support.firePropertyChange("List", null, tasks);
 
+    }
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);

@@ -1,7 +1,6 @@
-package handin1.view;
-import handin1.viewmodel.ViewModelFactory;
+package com.example.workshops2session2.View;
 
-
+import com.example.workshops2session2.ViewModel.ViewModelFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -18,7 +17,7 @@ public class ViewHandler {
 
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        openView(ViewFactory.MANAGE);
+        openView(ViewFactory.START);
     }
 
     public void openView(String id) {

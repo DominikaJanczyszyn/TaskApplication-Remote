@@ -1,6 +1,6 @@
-package handin1.view;
+package com.example.workshops2session2.View;
 
-import handin1.viewmodel.ViewModelFactory;
+import com.example.workshops2session2.ViewModel.ViewModelFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;
 
@@ -10,53 +10,72 @@ import java.io.IOException;
 public class ViewFactory {
     public static final String ADD = "add";
     public static final String MANAGE = "manage";
+    public static final String START = "start";
 
     private final ViewHandler viewHandler;
     private final ViewModelFactory viewModelFactory;
-    private AddVinylViewController addVinylViewController;
-    private ManageVinylsViewController manageVinylsViewController;
+    private StartViewController startViewController;
+    private ManageTasksViewController manageTasksViewController;
+    private AddTaskViewController addTaskViewController;
 
     public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         this.viewHandler = viewHandler;
         this.viewModelFactory = viewModelFactory;
-        this.addVinylViewController = null;
-        this.manageVinylsViewController = null;
+        this.startViewController = null;
+        this.manageTasksViewController = null;
+        this.addTaskViewController = null;
     }
-    public Region loadAddVinylView() {
-        if (addVinylViewController == null) {
+    public Region loadStartView() {
+        if (startViewController == null) {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/handin1/AddVinylView.fxml"));
+            loader.setLocation(getClass().getResource("/com/example/workshops2session2/StartView.fxml"));
             try {
                 Region root = loader.load();
-                addVinylViewController = loader.getController();
-                addVinylViewController.init(viewHandler, viewModelFactory.getAddVinylViewModel(), root);
+                startViewController = loader.getController();
+                startViewController.init(viewHandler, viewModelFactory.getStartViewModel(), root);
             } catch (IOException e) {
                 throw new IOError(e);
             }
         }
-        addVinylViewController.reset();
-        return addVinylViewController.getRoot();
+        startViewController.reset();
+        return startViewController.getRoot();
+    }
+    public Region loadAddTaskView() {
+        if (addTaskViewController == null) {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/workshops2session2/AddTaskView.fxml"));
+            try {
+                Region root = loader.load();
+                addTaskViewController = loader.getController();
+                addTaskViewController.init(viewHandler, viewModelFactory.getAddTaskViewModel(), root);
+            } catch (IOException e) {
+                throw new IOError(e);
+            }
+        }
+        addTaskViewController.reset();
+        return addTaskViewController.getRoot();
     }
     public Region loadManageVinylsView() {
-        if (manageVinylsViewController == null) {
+        if (manageTasksViewController == null) {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/handin1/ManageVinylsView.fxml"));
+            loader.setLocation(getClass().getResource("/com/example/workshops2session2/ManageTasksView.fxml"));
             try {
                 Region root = loader.load();
-                manageVinylsViewController = loader.getController();
-                manageVinylsViewController.init(viewHandler, viewModelFactory.getManageVinylsViewModel(), root);
+                manageTasksViewController = loader.getController();
+                manageTasksViewController.init(viewHandler, viewModelFactory.getManageTasksViewModel(), root);
             } catch (IOException e) {
                 throw new IOError(e);
             }
         }
-        manageVinylsViewController.reset();
-        return manageVinylsViewController.getRoot();
+        manageTasksViewController.reset();
+        return manageTasksViewController.getRoot();
     }
 
 
     public Region loadView(String id) {
         return switch (id) {
-            case ADD -> loadAddVinylView();
+            case START -> loadStartView();
+            case ADD -> loadAddTaskView();
             case MANAGE -> loadManageVinylsView();
             default -> throw new IllegalArgumentException("Unknown view: " + id);
         };

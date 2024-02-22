@@ -1,17 +1,16 @@
-package com.example.workshops2state_observer_threads_mvvm.Model;
+package com.example.workshops2session2.Model;
 
 public class Task {
     private final String title;
     private final String description;
     private State state;
-    private Person responsible;
-    private final Person creator;
+    private Person person;
 
     public Task(String title, String description, Person creator) {
         this.title = title;
         this.description = description;
-        this.state = new Added();
-        this.creator = creator;
+        this.state = new NotStarted();
+        this.person = creator;
     }
 
     public State getState() {
@@ -20,14 +19,6 @@ public class Task {
 
     public void setState(State state) {
         this.state = state;
-    }
-
-    public Person getResponsible() {
-        return responsible;
-    }
-
-    public void setResponsible(Person responsible) {
-        this.responsible = responsible;
     }
 
     public String getTitle() {
@@ -39,12 +30,9 @@ public class Task {
     }
 
     public Person getCreator() {
-        return creator;
+        return person;
     }
 
-    public void acceptTask(){
-        state.acceptTask(this);
-    }
     public void startTask(){
         state.startTask(this);
     }
@@ -54,6 +42,10 @@ public class Task {
     public boolean equals(Object obj){
         if(obj == null || obj.getClass()!= getClass()) return false;
         Task p = (Task) obj;
-        return p.getTitle().equals(this.getTitle()) && p.getDescription().equals(this.getDescription()) && p.getResponsible().equals(this.getResponsible()) && p.getState().equals(this.getState()) && p.getCreator().equals(this.getCreator());
+        return p.getTitle().equals(this.getTitle()) && p.getDescription().equals(this.getDescription()) && p.getState().equals(this.getState()) && p.getCreator().equals(this.getCreator());
+    }
+
+    public String toString(){
+        return title+": " +description;
     }
 }
