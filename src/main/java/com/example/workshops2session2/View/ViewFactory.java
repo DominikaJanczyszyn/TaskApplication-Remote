@@ -67,7 +67,6 @@ public class ViewFactory {
                 throw new IOError(e);
             }
         }
-        manageTasksViewController.reset();
         return manageTasksViewController.getRoot();
     }
 

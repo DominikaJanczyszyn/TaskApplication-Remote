@@ -11,6 +11,11 @@ public class InProgress implements State{
     public void finishTask(Task task){
         task.setState(new Done());
     }
+
+    public boolean equals(Object obj) {
+        return obj != null && obj.getClass() == getClass();
+    }
+
     public String toString(){
         return "In Progress";
     }

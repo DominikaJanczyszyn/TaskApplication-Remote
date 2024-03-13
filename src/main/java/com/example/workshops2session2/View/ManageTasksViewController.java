@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 
 public class ManageTasksViewController {
-    @FXML private Button addTastButton;
     @FXML private TableView<Task> ownTaskTableView;
     @FXML private TableColumn<Task, String> ownTaskTitle;
     @FXML private TableColumn<Task, String> ownTaskDescription;
@@ -54,9 +53,6 @@ public class ManageTasksViewController {
         this.taskDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         this.taskCreatedBy.setCellValueFactory(new PropertyValueFactory<>("person"));
         this.taskStatus.setCellValueFactory(new PropertyValueFactory<>("state"));
-
-
-
     }
     @FXML
     public void goToAdd(){
@@ -72,23 +68,27 @@ public class ManageTasksViewController {
     }
     @FXML
     public void onSelect(){
-        if(selected.get().getState() instanceof NotStarted){
-            finishButton.setDisable(true);
-            startButton.setDisable(false);
-        }
-        if(selected.get().getState() instanceof InProgress){
-            startButton.setDisable(true);
-            finishButton.setDisable(false);
-        }
-        if(selected.get().getState() instanceof Done){
-            finishButton.setDisable(true);
-            startButton.setDisable(true);
+        if (selected != null)
+        {
+            if (selected.get().getState() instanceof NotStarted)
+            {
+                finishButton.setDisable(true);
+                startButton.setDisable(false);
+            }
+            if (selected.get().getState() instanceof InProgress)
+            {
+                startButton.setDisable(true);
+                finishButton.setDisable(false);
+            }
+            if (selected.get().getState() instanceof Done)
+            {
+                finishButton.setDisable(true);
+                startButton.setDisable(true);
+            }
         }
     }
-    public void reset() {
-    }
+
     public Region getRoot() {
         return root;
     }
-
 }

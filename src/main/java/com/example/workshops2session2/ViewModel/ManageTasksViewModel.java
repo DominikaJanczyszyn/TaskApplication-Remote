@@ -9,64 +9,77 @@ import javafx.collections.ObservableList;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ManageTasksViewModel implements PropertyChangeListener {
     private StringProperty message;
-    private final SimpleListProperty<Task> tasks;
-
-    private final SimpleListProperty<Task> ownTasks;
-    private SimpleObjectProperty<Task> task;
+    private final ListProperty<Task> tasks;
+    private final ListProperty<Task> ownTasks;
+    private ObjectProperty<Task> task;
     private Model model;
 
-    private final Object tasksLock = new Object();
 
-
-    public ManageTasksViewModel(Model model){
+    public ManageTasksViewModel(Model model) throws IOException
+    {
         this.model = model;
         this.message = new SimpleStringProperty("");
         this.tasks = new SimpleListProperty<>(FXCollections.observableArrayList());
         this.ownTasks = new SimpleListProperty<>(FXCollections.observableArrayList());
         this.task = new SimpleObjectProperty<>();
         model.addPropertyChangeListener(this);
+
+        ArrayList<Task> temp = model.getTasks();
+        tasks.clear();
+        temp.forEach(task -> tasks.add(task));
+        ownTasks.clear();
+        temp.forEach(task -> {
+            if(task.getPerson().getName() != null && task.getPerson().getName().equals(User.name))
+                ownTasks.add(task);
+        });
     }
 
-    public void startTask(){
-        try{
-            model.startTask(task.get());
-        }catch (Error e){
+    public void startTask() {
+        try {
+            if (task.get() != null)
+                model.startTask(task.get());
+        } catch (Error e) {
             message.set(e.getMessage());
         }
     }
     public void finishTask(){
-        try{
-            model.finishTask(task.get());
-        }catch (Error e){
+        try {
+            if (task.get() != null)
+                model.finishTask(task.get());
+        } catch (Error e) {
             message.set(e.getMessage());
         }
     }
-    public void bindMessage(StringProperty property){
-        property.bindBidirectional(message);
+
+    public void bindTasks(ObjectProperty<ObservableList<Task>> property) {
+        property.bind(tasks);
+    }
+    public void bindSelected(ReadOnlyObjectProperty<Task> property) {
+        task.bind(property);
+    }
+
+    public void bindOwnTasks(ObjectProperty<ObservableList<Task>> property) {
+        property.bind(ownTasks);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        Platform.runLater(() -> { if (evt.getPropertyName().equals("List")) tasks.setAll((ArrayList<Task>)evt.getNewValue());
-        ArrayList<Task> temp = new ArrayList<>();
-        for(int i =0; i <tasks.size(); i++){
-            if(tasks.get(i).getCreator().getName().equals(User.name)){
-                temp.add(tasks.get(i));
-            }
+        Platform.runLater(() -> { if (evt.getPropertyName().equals("List"))
+        {
+            ArrayList<Task> temp = ((ArrayList<Task>)evt.getNewValue());
+            tasks.clear();
+            temp.forEach(task -> tasks.add(task));
+            ownTasks.clear();
+            temp.forEach(task -> {
+                if(task.getPerson().getName() != null && task.getPerson().getName().equals(User.name))
+                    ownTasks.add(task);
+            });
         }
-        ownTasks.setAll(temp);
         });
-    }
-    public void bindTasks(ObjectProperty<ObservableList<Task>> property) {
-        property.bind(tasks);
-    }
-    public void bindSelected(ReadOnlyObjectProperty<Task> property){task.bind(property);}
-
-    public void bindOwnTasks(ObjectProperty<ObservableList<Task>> property){
-        property.bind(ownTasks);
     }
 }

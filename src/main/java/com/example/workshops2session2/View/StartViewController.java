@@ -26,7 +26,7 @@ public class StartViewController {
 
     }
     @FXML
-    public void onOK(){
+    public void onOK() {
         viewModel.add();
         viewHandler.openView(ViewFactory.ADD);
 

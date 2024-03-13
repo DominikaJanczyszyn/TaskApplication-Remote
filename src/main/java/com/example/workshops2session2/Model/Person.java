@@ -13,7 +13,7 @@ public class Person {
     public boolean equals(Object obj){
         if(obj == null || obj.getClass()!= getClass()) return false;
         Person p = (Person) obj;
-        return p.name.equals(this.getName());
+        return p.name.equals(this.name);
     }
     public String toString(){
         return name;

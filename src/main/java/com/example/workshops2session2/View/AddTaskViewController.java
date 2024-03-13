@@ -31,13 +31,16 @@ public class AddTaskViewController {
 
     }
     @FXML
-    public void onAdd(){
+    public void onAdd() {
         viewModel.add();
     }
     public void onGoToOverview() {
         viewHandler.openView(ViewFactory.MANAGE);
     }
     public void reset() {
+        title.setText("");
+        description.setText("");
+        message.setText("");
     }
     public Region getRoot() {
         return root;

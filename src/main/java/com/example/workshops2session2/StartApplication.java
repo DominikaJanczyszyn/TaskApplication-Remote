@@ -8,6 +8,8 @@ import com.example.workshops2session2.Threads.Anna;
 import com.example.workshops2session2.Threads.Bob;
 import com.example.workshops2session2.View.ViewHandler;
 import com.example.workshops2session2.ViewModel.ViewModelFactory;
+import com.example.workshops2session2.client.Client;
+import com.example.workshops2session2.client.ClientImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,20 +20,11 @@ import java.io.IOException;
 public class StartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Model model = new ModelManager();
+        Client client = new ClientImpl("localhost", 8080, "230.0.0.0", 8888);
+        Model model = new ModelManager(client);
         ViewModelFactory viewModelFactory = new ViewModelFactory(model);
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start(stage);
-
-        Bob bob = new Bob(model);
-        Thread thread1 = new Thread(bob);
-       // thread1.start();
-
-        Anna anna = new Anna(model);
-        Thread thread2 = new Thread(anna);
-       // thread2.start();
-
-
     }
 
     public static void main(String[] args) {

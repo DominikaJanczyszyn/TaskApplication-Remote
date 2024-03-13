@@ -17,17 +17,17 @@ public class StartViewModel {
         this.message = new SimpleStringProperty("");
     }
     public void add(){
-        try{
+        try {
 
-            if (!name.get().isEmpty() && !name.get().equals("")){
+            if (!name.get().isEmpty() && !name.get().equals("")) {
                 Person person = new Person(name.get());
                 User.name = person.getName();
             }
-            else{
+            else {
                 message.set("Fill all of the fields!");
             }
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){
             message.set("Wrong input!");
         }
     }
@@ -38,5 +38,4 @@ public class StartViewModel {
     public void bindMessage(StringProperty property){
         property.bindBidirectional(message);
     }
-
 }
