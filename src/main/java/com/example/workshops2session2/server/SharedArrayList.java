@@ -20,8 +20,32 @@ public class SharedArrayList
     return instance;
   }
 
-  public ArrayList<Task> getTasks()
+  public synchronized ArrayList<Task> getTasks()
   {
     return tasks;
+  }
+
+  public synchronized void addTask(Task task) {
+    this.tasks.add(task);
+  }
+
+  public synchronized void startTask(Task task) {
+    for (int i = 0; i < tasks.size(); i++)
+    {
+      if (tasks.get(i).equals(task)) {
+        tasks.get(i).startTask();
+        break;
+      }
+    }
+  }
+
+  public synchronized void finishTask(Task task) {
+    for (int i = 0; i < tasks.size(); i++)
+    {
+      if (tasks.get(i).equals(task)) {
+        tasks.get(i).finishTask();
+        break;
+      }
+    }
   }
 }

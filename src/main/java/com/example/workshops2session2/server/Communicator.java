@@ -50,7 +50,7 @@ public class Communicator implements Runnable
           case ADD: {
             String message = input.readLine();
             Task task = gson.fromJson(message, Task.class);
-            sharedArrayList.getTasks().add(task);
+            sharedArrayList.addTask(task);
             System.out.println(socket.getLocalAddress() + ": Adding task request.");
             broadcaster.broadcast(gson.toJson(sharedArrayList.getTasks()));
             break;
@@ -58,30 +58,16 @@ public class Communicator implements Runnable
           case START: {
             String message = input.readLine();
             Task task = gson.fromJson(message, Task.class);
-            innerLoop:for (Task value : sharedArrayList.getTasks())
-            {
-              if (task.equals(value))
-              {
-                value.startTask();
-                System.out.println(socket.getLocalAddress() + ": Starting task request.");
-                break innerLoop;
-              }
-            }
+            sharedArrayList.startTask(task);
+            System.out.println(socket.getLocalAddress() + ": Starting task request.");
             broadcaster.broadcast(gson.toJson(sharedArrayList.getTasks()));
             break;
           }
           case FINISH: {
             String message = input.readLine();
             Task task = gson.fromJson(message, Task.class);
-            innerLoop:for (Task value : sharedArrayList.getTasks())
-            {
-              if (task.equals(value))
-              {
-                value.finishTask();
-                System.out.println(socket.getLocalAddress() + ": Finishing task request.");
-                break innerLoop;
-              }
-            }
+            sharedArrayList.finishTask(task);
+            System.out.println(socket.getLocalAddress() + ": Finishing task request.");
             broadcaster.broadcast(gson.toJson(sharedArrayList.getTasks()));
             break;
           }
