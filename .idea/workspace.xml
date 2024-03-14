@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5605e65a-5f25-44df-8de9-24d083e67306" name="Changes" comment="commit1">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/StateInterfaceAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/ClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/MessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Broadcaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Communicator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/ServerStart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Done.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Done.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/InProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/InProgress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/ModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/NotStarted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/NotStarted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/StartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/StartApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/AddTaskViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/AddTaskViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ManageTasksViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ManageTasksViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/StartViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/StartViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/AddTaskViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/AddTaskViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/ManageTasksViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/ManageTasksViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/StartViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/StartViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/ViewModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/ViewModelFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +124,19 @@
       <workItem from="1708872040051" duration="26000" />
       <workItem from="1710012134663" duration="6990000" />
       <workItem from="1710170345695" duration="19000" />
+      <workItem from="1710323343952" duration="170000" />
+      <workItem from="1710404926350" duration="8000" />
+      <workItem from="1710414922845" duration="818000" />
     </task>
+    <task id="LOCAL-00001" summary="commit1">
+      <option name="closed" value="true" />
+      <created>1710323463228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710323463228</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -13,7 +13,7 @@ public class SharedArrayList
     this.tasks = new ArrayList<>();
   }
 
-  public static SharedArrayList getInstance() {
+  public static synchronized SharedArrayList getInstance() {
     if (instance == null) {
       instance = new SharedArrayList();
     }
