@@ -1,5 +1,8 @@
 package com.example.workshops2session2.Model;
-public class Person {
+
+import java.io.Serializable;
+
+public class Person implements Serializable {
     private final String name;
 
     public Person(String name){

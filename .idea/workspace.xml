@@ -5,9 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5605e65a-5f25-44df-8de9-24d083e67306" name="Changes" comment="commit1">
+      <change afterPath="$PROJECT_DIR$/JAR files/postgresql-42.6.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JAR files/remoteobserver.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Shared/Connector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/RemoteConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Communicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Communicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Done.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Done.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/InProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/InProgress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/NotStarted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/NotStarted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/StartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/StartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Threads/Anna.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/Threads/Bob.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/AddTaskViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/AddTaskViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ManageTasksViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/View/ManageTasksViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/AddTaskViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/ViewModel/AddTaskViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/ClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/client/MessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Broadcaster.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/Communicator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/ServerStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/ServerStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/workshops2session2/server/SharedArrayList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,31 +68,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dominika/Desktop/Workshops2/Workshops2Session2/src/main/java/com/example/workshops2session2/View&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15332031&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Dominika/Desktop/Workshops2/TaskApplication2/JAR files/remoteobserver.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15332031",
+    "project.structure.side.proportion": "0.40689656",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dominika\Desktop\Workshops2\TaskApplication2" />
       <recent name="C:\Users\Dominika\Desktop\Workshops2\Workshops2Session2\src\main\java\com\example\workshops2session2\View" />
       <recent name="C:\Users\Dominika\Desktop\Workshops2\Workshops2Session2\src\main\java\com\example\workshops2session2" />
       <recent name="C:\Users\Dominika\Desktop\Workshops2\Workshops2Session2\src\main\java\com\example\workshops2session2\Model" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.workshops2session2" />
     </key>
   </component>
   <component name="RunManager" selected="Application.StartApplication">
@@ -128,6 +156,7 @@
       <workItem from="1710323343952" duration="170000" />
       <workItem from="1710404926350" duration="8000" />
       <workItem from="1710414922845" duration="1180000" />
+      <workItem from="1712767228729" duration="4029000" />
     </task>
     <task id="LOCAL-00001" summary="commit1">
       <option name="closed" value="true" />

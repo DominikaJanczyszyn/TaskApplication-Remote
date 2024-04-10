@@ -2,10 +2,7 @@ package com.example.workshops2session2.View;
 
 import com.example.workshops2session2.Model.*;
 import com.example.workshops2session2.ViewModel.ManageTasksViewModel;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;

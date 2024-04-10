@@ -1,7 +1,6 @@
 package com.example.workshops2session2.View;
 
 import com.example.workshops2session2.ViewModel.AddTaskViewModel;
-import com.example.workshops2session2.ViewModel.StartViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;

@@ -1,19 +1,22 @@
 package com.example.workshops2session2.Model;
 
+import com.example.workshops2session2.Shared.Connector;
 import com.example.workshops2session2.client.Client;
+import com.example.workshops2session2.client.ClientImpl;
 import javafx.application.Platform;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class ModelManager implements Model, PropertyChangeListener{
     private final Client client;
     private final PropertyChangeSupport support;
-    public ModelManager(Client client){
-        this.client = client;
+    public ModelManager(Connector connector) throws RemoteException {
+        this.client = new ClientImpl(connector);
         this.client.addPropertyChangeListener(this);
         this.support = new PropertyChangeSupport(this);
     }
@@ -25,17 +28,29 @@ public class ModelManager implements Model, PropertyChangeListener{
 
     @Override
     public synchronized void startTask(Task task) {
-        client.startTask(task);
+        try {
+            client.startTask(task);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public synchronized void finishTask(Task task) {
-        client.finishTask(task);
+        try {
+            client.finishTask(task);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public synchronized void addTask(Task task) {
-        client.addTask(task);
+        try {
+            client.addTask(task);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {

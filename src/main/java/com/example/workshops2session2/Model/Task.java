@@ -1,6 +1,8 @@
 package com.example.workshops2session2.Model;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable {
     private final String title;
     private final String description;
     private State state;

@@ -1,6 +1,8 @@
 package com.example.workshops2session2.Model;
 
-public class InProgress implements State{
+import java.io.Serializable;
+
+public class InProgress implements State, Serializable {
     @Override
     public void startTask(Task task){
         task.setState(this);

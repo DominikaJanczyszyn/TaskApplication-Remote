@@ -34,7 +34,7 @@ public class AddTaskViewModel {
             }
 
         } catch (IllegalArgumentException e) {
-            message.set("Wrong input!");
+            message.set(e.getMessage());
         }
     }
     public void bindTitle(StringProperty property) {

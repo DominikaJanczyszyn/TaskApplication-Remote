@@ -1,102 +1,77 @@
 package com.example.workshops2session2.client;
 
-import com.example.workshops2session2.Model.State;
-import com.example.workshops2session2.Model.StateInterfaceAdapter;
+import com.example.workshops2session2.Shared.Connector;
 import com.example.workshops2session2.Model.Task;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import dk.via.remote.observer.RemotePropertyChangeEvent;
+import dk.via.remote.observer.RemotePropertyChangeListener;
+import javafx.application.Platform;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class ClientImpl implements Client
+public class ClientImpl extends UnicastRemoteObject implements Client , RemotePropertyChangeListener
 {
-  private final Socket socket;
-  private final PrintWriter output;
-  private final BufferedReader input;
-  private final MessageListener listener;
+  private final Connector connector;
   private final PropertyChangeSupport support;
-  private final Gson gson;
-
-  private final static String GET = "GET";
-  private final static String ADD = "ADD";
-  private final static String START = "START";
-  private final static String FINISH = "FINISH";
-  private final static String EXIT = "EXIT";
 
 
-  public ClientImpl(String host, int port, String groupAddress, int groupPort) throws
-      IOException
+  public ClientImpl(Connector connector) throws RemoteException
   {
-    this.socket = new Socket(host, port);
-    this.output = new PrintWriter(socket.getOutputStream());
-    this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    this.connector = connector;
     this.support = new PropertyChangeSupport(this);
-    this.gson = new GsonBuilder().registerTypeAdapter(State.class, new StateInterfaceAdapter()).create();
-
-    this.listener = new MessageListener(this, groupAddress, groupPort);
-    Thread thread = new Thread(listener);
-    thread.start();
+    this.connector.addRemotePropertyChangeListener(this);
   }
 
-  @Override public ArrayList<Task> getTasks() throws IOException
+  @Override public ArrayList<Task> getTasks() throws RemoteException
   {
-    output.println(GET);
-    output.flush();
-    ArrayList<Task> tasks = gson.fromJson(input.readLine(), new TypeToken<ArrayList<Task>>() {}.getType());
-    return tasks;
+    try{
+      return connector.getTasks();
+    }catch (Exception e){
+      throw new IllegalArgumentException(e);
+    }
   }
 
-  @Override public void startTask(Task task)
+  @Override public void startTask(Task task) throws RemoteException
   {
-    output.println(START);
-    output.println(gson.toJson(task));
-    output.flush();
+    try{
+      connector.startTask(task);
+    }catch (Exception e){
+      throw new IllegalArgumentException(e);
+    }
   }
 
-  @Override public void finishTask(Task task)
+  @Override public void finishTask(Task task) throws RemoteException
   {
-    output.println(FINISH);
-    output.println(gson.toJson(task));
-    output.flush();
+    try{
+      connector.finishTask(task);
+    }catch (Exception e){
+      throw new IllegalArgumentException(e);
+    }
   }
 
-  @Override public void addTask(Task task)
+  @Override public void addTask(Task task) throws RemoteException
   {
-    output.println(ADD);
-    output.println(gson.toJson(task));
-    output.flush();
+    try{
+      connector.addTask(task);
+    }catch (Exception e){
+      throw new IllegalArgumentException(e);
+    }
   }
 
-  @Override public void addPropertyChangeListener(
+  @Override public void addPropertyChangeListener (
       PropertyChangeListener listener)
   {
     this.support.addPropertyChangeListener(listener);
   }
 
-  @Override public void removePropertyChangeListener(
-      PropertyChangeListener listener)
-  {
-    this.support.removePropertyChangeListener(listener);
-  }
-
-  public void receiveBroadcast(String message) {
-    ArrayList<Task> update = gson.fromJson(message, new TypeToken<ArrayList<Task>>() {}.getType());
-    support.firePropertyChange("List", null, update);
-  }
-
-  @Override public void close() throws IOException
-  {
-    listener.close();
-    output.println(EXIT);
-    output.flush();
-    socket.close();
+  @Override
+  public void propertyChange(RemotePropertyChangeEvent event) throws RemoteException {
+    Platform.runLater(()->{
+      if (event.getPropertyName().equals("List"))
+        this.support.firePropertyChange("List", null, event.getNewValue());
+    });
   }
 }

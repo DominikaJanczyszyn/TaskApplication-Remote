@@ -1,21 +1,20 @@
 package com.example.workshops2session2.server;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.rmi.AlreadyBoundException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 public class ServerStart
 {
-  public static void main(String[] args) throws IOException
-  {
-    ServerSocket serverSocket = new ServerSocket(8080);
-    Broadcaster broadcaster = new Broadcaster("230.0.0.0", 8888);
-    while (true) {
-      System.out.println("Server ready for input.");
-      Socket socket = serverSocket.accept();
-      Communicator communicator = new Communicator(socket, broadcaster);
-      Thread communicatorThread = new Thread(communicator);
-      communicatorThread.start();
+    public static void main(String[] args) throws RemoteException, AlreadyBoundException
+    {
+        Registry registry = LocateRegistry.createRegistry(8080);
+        RemoteConnector remoteConnector = new RemoteConnector();
+        Remote remote = UnicastRemoteObject.exportObject(remoteConnector, 0);
+        registry.bind("rmiServer", remote);
+        System.out.println("Server running");
     }
-  }
 }
